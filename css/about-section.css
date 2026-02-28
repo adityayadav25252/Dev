@@ -1,0 +1,434 @@
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 1.5rem 80px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  /* Match hero section background */
+  background: #ffffff;
+  color: #000000;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+}
+
+
+
+.about-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== TITLE ===== */
+.page-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.page-title h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.page-title h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+
+.page-title .bar {
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  margin: 2rem auto 0;
+  transform: scaleX(0);
+  animation: scaleBar 0.6s 0.4s ease-in-out forwards;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== TAGLINE ===== */
+.tagline {
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s ease-out forwards;
+}
+
+.tagline h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tagline h2::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  right: -20px;
+  bottom: -10px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* ===== INTRODUCTION ===== */
+.intro-content {
+  text-align: center;
+  margin-bottom: 5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s ease-out forwards;
+  position: relative;
+}
+
+.intro-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.intro-content p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
+  font-weight: 400;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== MISSION & VISION GRID ===== */
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.mission-card,
+.vision-card {
+  background: transparent;
+  backdrop-filter: blur(2px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  padding: 3rem 2rem;
+  border-radius: 32px;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+  opacity: 0;
+  animation: cardEntrance 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-card::before,
+.vision-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+.mission-card {
+  animation-delay: 0.5s;
+}
+
+.vision-card {
+  animation-delay: 0.7s;
+}
+
+.mission-card:hover,
+.vision-card:hover {
+  border-color: #ffffff;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mission-card .card-icon,
+.vision-card .card-icon {
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  display: block;
+  text-align: center;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.mission-card:hover .card-icon,
+.vision-card:hover .card-icon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+.mission-card h3,
+.vision-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mission-card p,
+.vision-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 400;
+}
+
+/* ===== EXPERTISE SECTION ===== */
+.expertise-section {
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s ease-out forwards;
+}
+
+.expertise-section h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.expertise-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.expertise-item {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 32px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.expertise-item:hover {
+  border-color: #ffffff;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.expertise-item:hover::before {
+  opacity: 1;
+}
+
+.expertise-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  transition: all 0.4s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.expertise-item:hover .expertise-icon {
+  transform: scale(1.15) rotate(-5deg);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+.expertise-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleBar {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== DARK MODE SPECIFIC STYLES ===== */
+body.dark .about-section {
+  background-color: #000000;
+  color: #ffffff;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+}
+
+/* ===== LIGHT MODE SPECIFIC STYLES ===== */
+body:not(.dark) .about-section {
+  background-color: #ffffff;
+  color: #000000;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+}
+
+body:not(.dark) .page-title h1,
+body:not(.dark) .tagline h2,
+body:not(.dark) .mission-card h3,
+body:not(.dark) .vision-card h3,
+body:not(.dark) .expertise-section h3,
+body:not(.dark) .expertise-item h4 {
+  color: #2c3e50;
+}
+
+body:not(.dark) .intro-content p,
+body:not(.dark) .mission-card p,
+body:not(.dark) .vision-card p {
+  color: rgba(44, 62, 80, 0.8);
+}
+
+body:not(.dark) .mission-card,
+body:not(.dark) .vision-card {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+body:not(.dark) .expertise-item {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+body:not(.dark) .mission-card:hover,
+body:not(.dark) .vision-card:hover {
+  border-color: #000000 !important;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) !important;
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+body:not(.dark) .expertise-item:hover {
+  border-color: #000000 !important;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) !important;
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+body.dark .mission-card,
+body.dark .vision-card {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark .expertise-item {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+body.dark .mission-card:hover,
+body.dark .vision-card:hover {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+body.dark .expertise-item:hover {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}

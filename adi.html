@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Navbar with Dark Mode</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="components/navbar.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/services-section.css">
+  <link rel="stylesheet" href="css/contact-section.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/hero-section.css?v=11">
+  <link rel="stylesheet" href="css/about-section.css">
+
+  <style>
+    /* ===== IMPROVED FOOTER STYLES ===== */
+    footer {
+      margin-top: 0;
+      padding: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Footer Main Container */
+    .footer-container {
+      width: 100%;
+      padding: 6rem 2rem 2rem;
+      position: relative;
+    }
+
+    /* Light mode - black text on white background */
+    body:not(.dark) .footer-container {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /* Dark mode - white text on black background */
+    body.dark .footer-container {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    /* Footer Top Section - Big Typography */
+    .footer-hero {
+      text-align: center;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid;
+      position: relative;
+    }
+
+    body:not(.dark) .footer-hero {
+      border-color: #000000;
+    }
+
+    body.dark .footer-hero {
+      border-color: #ffffff;
+    }
+
+    .footer-brand {
+      font-size: clamp(3rem, 12vw, 10rem);
+      letter-spacing: 0.05em;
+      font-weight: 900;
+      line-height: 0.9;
+      margin: 0;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+    }
+
+    /* Hover effect - invert colors with scale */
+    body:not(.dark) .footer-brand:hover {
+      color: #ffffff;
+      text-shadow: 0 0 40px rgba(0,0,0,0.3);
+      transform: scale(1.02);
+    }
+
+    body.dark .footer-brand:hover {
+      color: #000000;
+      text-shadow: 0 0 40px rgba(255,255,255,0.5);
+      transform: scale(1.02);
+    }
+
+    .footer-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+
+    /* Footer Content Grid */
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Underline animation for headings */
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      transition: width 0.3s ease;
+    }
+
+    body:not(.dark) .footer-column h3::after {
+      background: #000000;
+    }
+
+    body.dark .footer-column h3::after {
+      background: #ffffff;
+    }
+
+    .footer-column:hover h3::after {
+      width: 100%;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+    }
+
+    body:not(.dark) .footer-links a {
+      color: #000000;
+    }
+
+    body.dark .footer-links a {
+      color: #ffffff;
+    }
+
+    .footer-links a::before {
+      content: '→';
+      position: absolute;
+      left: -20px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      padding-left: 20px;
+    }
+
+    .footer-links a:hover::before {
+      opacity: 1;
+      left: 0;
+    }
+
+    /* Social Icons */
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      border: 1px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body:not(.dark) .social-icon {
+      border-color: #000000;
+      color: #000000;
+    }
+
+    body.dark .social-icon {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .social-icon::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+
+    body:not(.dark) .social-icon::before {
+      background: #000000;
+    }
+
+    body.dark .social-icon::before {
+      background: #ffffff;
+    }
+
+    .social-icon:hover::before {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+
+    body:not(.dark) .social-icon:hover {
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    body.dark .social-icon:hover {
+      color: #000000;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    body:not(.dark) .footer-bottom {
+      border-color: rgba(0,0,0,0.2);
+    }
+
+    body.dark .footer-bottom {
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .footer-credits {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-credits a {
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    body:not(.dark) .footer-credits a {
+      color: #000000;
+    }
+
+    body.dark .footer-credits a {
+      color: #ffffff;
+    }
+
+    .footer-credits a:hover {
+      opacity: 0.6;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border: 1px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+      font-size: 1.2rem;
+    }
+
+    body:not(.dark) .back-to-top {
+      background: #ffffff;
+      border-color: #000000;
+      color: #000000;
+    }
+
+    body.dark .back-to-top {
+      background: #000000;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-credits {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    /* Marquee Animation for extra flair */
+    .footer-marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 1rem 0;
+      border-top: 1px solid;
+      border-bottom: 1px solid;
+      margin: 2rem 0;
+    }
+
+    body:not(.dark) .footer-marquee {
+      border-color: rgba(0,0,0,0.1);
+    }
+
+    body.dark .footer-marquee {
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+      font-size: 1rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Ambient particles for cinematic dark mode effect -->
+  <div class="ambient-particles"></div>
+
+  <!-- Theme transition ripple overlay -->
+  <div class="theme-ripple" id="themeRipple"></div>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <div class="logo">
+        <div class="header-cube">
+          <div class="header-face header-front">
+            <img src="img/white_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-back">
+            <img src="img/black_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-right">
+            <img src="img/white_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-left">
+            <img src="img/black_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-top">
+            <img src="img/white_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-bottom">
+            <img src="img/black_logo.png" alt="Logo">
+          </div>
+        </div>
+        <span>DEV CUBE TECH</span>
+      </div>
+      <ul class="nav-links">
+        <li class="mobile-menu-label"><span>Navigation</span></li>
+        <li><a href="#home" data-section="home">Home</a></li>
+        <li><a href="#services" data-section="services">Services</a></li>
+        <li><a href="#projects" data-section="projects">Projects</a></li>
+        <li><a href="#training" data-section="training">Training</a></li>
+        <li><a href="#tools" data-section="tools">Tools</a></li>
+        <li><a href="#about" data-section="about">About</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
+
+        <li class="mobile-menu-actions">
+          <button class="dark-btn mobile-dark-btn" id="darkToggleMobile">
+            <span class="icon moon-icon">🌙</span>
+            <span class="icon sun-icon">☀️</span>
+            <span>Switch Theme</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="dark-btn" id="darkToggle">
+          <span class="icon moon-icon">🌙</span>
+          <span class="icon sun-icon">☀️</span>
+        </button>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+ 
+
+ 
+
+  <!-- ===== IMPROVED FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      
+      <!-- Marquee Text -->
+      <div class="footer-marquee">
+        <div class="marquee-content">
+          DEV CUBE TECH • INNOVATE • CREATE • TRANSFORM • DEV CUBE TECH • INNOVATE • CREATE • TRANSFORM • 
+          DEV CUBE TECH • INNOVATE • CREATE • TRANSFORM • DEV CUBE TECH • INNOVATE • CREATE • TRANSFORM •
+        </div>
+      </div>
+
+      <!-- Hero Section with Big Typography -->
+      <div class="footer-hero">
+        <h2 class="footer-brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+          DEV CUBE TECH
+        </h2>
+        <p class="footer-tagline">Building Tomorrow's Digital Experience</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    ↑
+  </div>
+
+  <script src="components/navbar.js"></script>
+  <script src="js/script.js"></script>
+
+  <script>
+    // Back to Top Button Visibility
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Footer Brand Animation on Scroll
+    gsap.from(".footer-brand", {
+      scrollTrigger: {
+        trigger: ".footer-hero",
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Stagger animation for footer columns
+    gsap.from(".footer-column", {
+      scrollTrigger: {
+        trigger: ".footer-content",
+        start: "top 85%",
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power3.out"
+    });
+  </script>
+
+</body>
+
+</html>

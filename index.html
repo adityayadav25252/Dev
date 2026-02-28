@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Navbar with Dark Mode</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="components/navbar.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/services-section.css">
+  <link rel="stylesheet" href="css/contact-section.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/hero-section.css?v=11">
+  <link rel="stylesheet" href="css/about-section.css">
+
+
+</head>
+
+<body>
+
+  <!-- Ambient particles for cinematic dark mode effect -->
+  <div class="ambient-particles"></div>
+
+  <!-- Theme transition ripple overlay -->
+  <div class="theme-ripple" id="themeRipple"></div>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <div class="logo">
+        <div class="header-cube">
+          <div class="header-face header-front">
+            <img src="img/white_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-back">
+            <img src="img/black_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-right">
+            <img src="img/white_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-left">
+            <img src="img/black_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-top">
+            <img src="img/white_logo.png" alt="Logo">
+          </div>
+          <div class="header-face header-bottom">
+            <img src="img/black_logo.png" alt="Logo">
+          </div>
+        </div>
+        <span>DEV CUBE TECH</span>
+      </div>
+      <ul class="nav-links">
+        <li class="mobile-menu-label"><span>Navigation</span></li>
+        <li><a href="#home" data-section="home">Home</a></li>
+        <li><a href="#services" data-section="services">Services</a></li>
+        <li><a href="#projects" data-section="projects">Projects</a></li>
+        <li><a href="#training" data-section="training">Training</a></li>
+        <li><a href="#tools" data-section="tools">Tools</a></li>
+        <li><a href="#about" data-section="about">About</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
+
+        <li class="mobile-menu-actions">
+          <button class="dark-btn mobile-dark-btn" id="darkToggleMobile">
+            <span class="icon moon-icon">🌙</span>
+            <span class="icon sun-icon">☀️</span>
+            <span>Switch Theme</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="dark-btn" id="darkToggle">
+          <span class="icon moon-icon">🌙</span>
+          <span class="icon sun-icon">☀️</span>
+        </button>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section" id="home">
+
+
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>Welcome to the Future</span>
+      </div>
+
+      <div class="hero-background-text">DEV CUBE TECH</div>
+
+      <div class="hero-text">
+        <h1 class="hero-title">
+
+          <span class="title-line highlight"> We Build Digital Excellence</span>
+          <span class="title-line">That Inspires</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Transforming ideas into powerful digital experiences with cutting-edge technology and creative innovation
+        </p>
+
+
+
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="scrollToSection('services')">
+            <span>Explore Our Work</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button class="btn-secondary" onclick="scrollToSection('contact')">
+            <span>Start Your Project</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+  <!-- ===== SERVICES SECTION ===== -->
+  <section id="services" class="services-section">
+    <div class="services-wrapper">
+      <!-- title section -->
+      <div class="page-title">
+        <h1>OUR SERVICES</h1>
+        <div class="bar"></div>
+      </div>
+
+      <!-- service cards grid (only black & white) -->
+      <div class="services-grid">
+        <!-- 1. Web Development -->
+        <div class="service-card">
+          <div class="card-icon">◉</div>
+          <h2>WEB DEV</h2>
+          <p>Custom, responsive websites built with the latest technologies to ensure performance and scalability.</p>
+          <div class="card-marker">
+            <span>──</span> EXPLORE
+          </div>
+        </div>
+
+        <!-- 2. App Development -->
+        <div class="service-card">
+          <div class="card-icon">◉◉</div>
+          <h2>APP DEV</h2>
+          <p>Cross-platform mobile applications that deliver seamless user experiences across all devices.</p>
+          <div class="card-marker">
+            <span>──</span> EXPLORE
+          </div>
+        </div>
+
+        <!-- 3. Cybersecurity -->
+        <div class="service-card">
+          <div class="card-icon">◉◉◉</div>
+          <h2>CYBERSEC</h2>
+          <p>Comprehensive security solutions to protect your digital assets from modern threats.</p>
+          <div class="card-marker">
+            <span>──</span> EXPLORE
+          </div>
+        </div>
+
+        <!-- 4. AI/ML Solutions -->
+        <div class="service-card">
+          <div class="card-icon">◉◉◉◉</div>
+          <h2>AI / ML</h2>
+          <p>Intelligent systems powered by artificial intelligence and machine learning algorithms.</p>
+          <div class="card-marker">
+            <span>──</span> EXPLORE
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section id="projects" class="about-section">
+    <div class="about-wrapper">
+      <!-- title section -->
+      <div class="page-title">
+        <h1>ABOUT DEV CUBE TECH</h1>
+        <div class="bar"></div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+
+      <div class="contact-header">
+
+        <div class="contact-tag">GET IN TOUCH</div>
+      </div>
+
+      <!-- main grid :: left = reach us directly / right = send us a message -->
+      <div class="contact-grid">
+
+        <!-- LEFT SIDE: REACH US DIRECTLY with email, phone, response -->
+        <div class="contact-info-section">
+          <p class="contact-section-label">REACH US DIRECTLY</p>
+
+          <!-- EMAIL block -->
+          <div class="contact-info-item">
+            <span class="contact-info-key">EMAIL</span>
+            <span class="contact-info-val">
+              <a href="mailto:devcubetech@gmail.com">devcubetech@gmail.com</a>
+            </span>
+          </div>
+
+          <!-- PHONE block -->
+          <div class="contact-info-item">
+            <span class="contact-info-key">PHONE</span>
+            <span class="contact-info-val">
+              <a href="tel:+918770753546">+91 8770753546</a>
+            </span>
+          </div>
+
+          <!-- RESPONSE block (within 24 hrs) -->
+          <div class="contact-info-item">
+            <span class="contact-info-key">RESPONSE</span>
+            <span class="contact-info-val">Within 24 hrs</span>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: SEND US A MESSAGE with form -->
+        <div class="contact-form-section">
+          <p class="contact-section-label">SEND US A MESSAGE</p>
+
+          <form id="monochromeContactForm">
+            <!-- NAME field (placeholder: Your full name) -->
+            <div class="contact-form-group">
+              <label for="name">NAME</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+
+            <!-- EMAIL field (placeholder: your@email.com) -->
+            <div class="contact-form-group">
+              <label for="email">EMAIL</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+
+            <!-- PHONE NUMBER field (exactly as image: PHONE NUMBER label + placeholder +91 00000 00000) -->
+            <div class="contact-form-group">
+              <label for="phone">PHONE NUMBER</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 00000 00000">
+            </div>
+
+            <!-- MESSAGE field (Tell us about your project..) -->
+            <div class="contact-form-group">
+              <label for="message">MESSAGE</label>
+              <textarea id="message" name="message" placeholder="Tell us about your project.." required></textarea>
+            </div>
+
+            <!-- submit row with SEND MESSAGE button -->
+            <div class="contact-submit-row">
+              <button type="submit" class="contact-btn">SEND MESSAGE</button>
+            </div>
+
+            <!-- success message (hidden initially) -->
+            <p class="contact-success" id="successMsg">✓ &nbsp; Message sent successfully.</p>
+          </form>
+        </div>
+      </div>
+
+      <footer>
+        <div>DEV CUBE TECH</div>
+      </footer>
+    </div>
+  </section>
+
+  <script src="components/navbar.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/footer.js"></script>
+
+
+</body>
+
+</html>

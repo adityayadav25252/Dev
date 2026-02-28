@@ -1,0 +1,210 @@
+/* ===== BLACK AND WHITE HERO SECTION ===== */
+
+.hero-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  color: #000000;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  padding-top: 80px;
+}
+
+body.dark .hero-section {
+  background: #000000;
+  color: #ffffff;
+  
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+}
+
+.hero-background-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6vw;
+  font-weight: 700;
+  letter-spacing: 10px;
+  white-space: nowrap;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.dark .hero-background-text {
+  opacity: 0.07;
+}
+
+/* Hide colorful elements */
+.hero-noise,
+.hero-particles,
+.hero-gradient,
+.floating-shapes,
+.hero-background-text {
+  display: block;
+  /* ya flex, ya inline-block — jo layout ke hisaab se sahi ho */
+}
+
+/* Main content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Hero badge */
+.hero-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+body.dark .hero-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000000;
+}
+
+/* Hero title */
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.title-line.highlight {
+  color: #000000;
+  background: transparent;
+  -webkit-text-fill-color: currentColor;
+}
+
+body.dark .title-line.highlight {
+  color: #ffffff;
+  background: transparent;
+  -webkit-text-fill-color: currentColor;
+}
+
+body.dark .title-line:not(.highlight) {
+  color: #ffffff;
+}
+
+/* Hero subtitle */
+.hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+/* Hero buttons */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.btn-secondary:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+body.dark .btn-primary {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+body.dark .btn-primary:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+body.dark .btn-secondary {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body.dark .btn-secondary:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}

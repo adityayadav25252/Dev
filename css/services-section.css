@@ -1,0 +1,273 @@
+/* ===== SERVICES SECTION ===== */
+.services-section {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+
+  /* Match hero section background */
+  background: #ffffff;
+  color: #000000;
+  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed;
+}
+
+.services-wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 2rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== TITLE (monochrome, soft animation) ===== */
+.page-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.page-title h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #000000);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px var(--text-shadow, rgba(0, 0, 0, 0.3));
+  transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-title .bar {
+  width: 80px;
+  height: 4px;
+  background: var(--text-primary, #000000);
+  margin: 1rem auto 0;
+  transform: scaleX(0);
+  animation: scaleBar 0.6s 0.4s ease-in-out forwards;
+  transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== CARDS GRID ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  padding: 0.5rem;
+}
+
+/* ===== CARD ===== */
+.service-card {
+  background: transparent;
+  /* no background fill – only borders & text */
+  border: 1.5px solid var(--card-border, rgba(0, 0, 0, 0.3));
+  padding: 2.2rem 1.5rem 2.5rem;
+  border-radius: 32px;
+  backdrop-filter: blur(2px);
+  transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.1), border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(24px);
+  animation: cardEntrance 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+/* staggered animation */
+.service-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.service-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.service-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.service-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* border & glow on hover */
+.service-card:hover {
+  border-color: var(--text-primary, #000000);
+  box-shadow: 0 0 30px var(--card-glow, rgba(0, 0, 0, 0.2));
+  transform: translateY(-8px) scale(1.02);
+  background: var(--card-bg-hover, rgba(0, 0, 0, 0.02));
+}
+
+/* animated underline effect */
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--text-primary, #000000);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out, background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* icon / decorative number */
+.card-icon {
+  font-size: 2.8rem;
+  font-weight: 200;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary, #000000);
+  opacity: 0.9;
+  transition: all 0.2s, color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.service-card:hover .card-icon {
+  transform: scale(1.1);
+  text-shadow: 0 0 12px var(--text-primary, #000000);
+}
+
+/* titles inside cards */
+.service-card h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  color: var(--text-primary, #000000);
+  border-bottom: 1px solid var(--card-border-light, rgba(0, 0, 0, 0.2));
+  padding-bottom: 0.5rem;
+  transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* description text */
+.service-card p {
+  color: var(--text-muted, #666666);
+  font-size: 1rem;
+  font-weight: 350;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s, color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover p {
+  color: var(--text-primary, #000000);
+}
+
+/* subtle learn‑more indicator */
+.card-marker {
+  color: var(--text-primary, #000000);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  opacity: 0.6;
+  transition: opacity 0.2s, gap 0.2s, color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-marker span {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.service-card:hover .card-marker {
+  opacity: 1;
+  gap: 0.8rem;
+}
+
+/* ===== KEYFRAMES ===== */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleBar {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== UTILITY & EXTRA BORDER ===== */
+.foot-note {
+  text-align: center;
+  margin-top: 4rem;
+  color: var(--text-muted, rgba(0, 0, 0, 0.5));
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-top: 1px solid var(--card-border-light, rgba(0, 0, 0, 0.1));
+  padding-top: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s ease-out forwards;
+  transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* selection styles */
+.services-section ::selection {
+  background: var(--text-primary, #000000);
+  color: var(--bg-primary, #ffffff);
+}
+
+/* ===== DARK MODE SPECIFIC STYLES ===== */
+body.dark .services-section {
+  --bg-primary: #000000;
+  --text-primary: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --text-shadow: rgba(255, 255, 255, 0.3);
+  --card-border: rgba(255, 255, 255, 0.3);
+  --card-border-light: rgba(255, 255, 255, 0.2);
+  --card-glow: rgba(255, 255, 255, 0.2);
+  --card-bg-hover: rgba(255, 255, 255, 0.02);
+  --dot-color: rgba(255, 255, 255, 0.3);
+
+  background-color: #000000;
+  color: #ffffff;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+}
+
+/* ===== LIGHT MODE SPECIFIC STYLES ===== */
+body:not(.dark) .services-section {
+  --bg-primary: #ffffff;
+  --text-primary: #000000;
+  --text-muted: rgba(0, 0, 0, 0.6);
+  --text-shadow: rgba(0, 0, 0, 0.3);
+  --card-border: rgba(0, 0, 0, 0.3);
+  --card-border-light: rgba(0, 0, 0, 0.2);
+  --card-glow: rgba(0, 0, 0, 0.2);
+  --card-bg-hover: rgba(0, 0, 0, 0.02);
+  --dot-color: rgba(0, 0, 0, 0.3);
+}
